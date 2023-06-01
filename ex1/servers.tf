@@ -26,6 +26,10 @@ resource "aws_route53_record" "frontend" {
   ttl     = 30
   records = [aws_instance.frontend.private_ip]
 }
+
+output "DNS_name" {
+  value = aws_route53_record.frontend.name
+}
 #---------------------------------------------
 resource "aws_instance" "mongodb" {
   ami           = data.aws_ami.centos.image_id
