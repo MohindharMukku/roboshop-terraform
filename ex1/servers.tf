@@ -1,8 +1,8 @@
 #reperate this block for creating all the 10 instances
 data "aws_ami" "centos" {
-  owners = ["973714476881"]
+  owners      = ["973714476881"]
   most_recent = true
-  name_regex = "Centos-8-DevOps-practice"
+  name_regex  = "Centos-8-DevOps-Practice"
 }
 
 output "aws_ami" {
