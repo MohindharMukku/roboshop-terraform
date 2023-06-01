@@ -5,7 +5,7 @@ data "aws_ami" "centos" {
   name_regex = "Centos-8-DevOps-practice"
 }
 
-output "ami_id" {
+output "aws_ami" {
   value = data.aws_ami.centos.image_id
 }
 
