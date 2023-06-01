@@ -20,7 +20,7 @@ resource "aws_instance" "frontend" {
 }
 
 resource "aws_route53_record" "frontend" {
-  zone_id = Z08053652T3ZYZGCDQNRV # get the hosted zone ID from the route53
+  zone_id = "Z08053652T3ZYZGCDQNRV" # get the hosted zone ID from the route53
   name    = "frontend-mohindhar.tech"
   type    = "A"
   ttl     = 30
@@ -37,7 +37,7 @@ resource "aws_instance" "mongodb" {
 }
 
 resource "aws_route53_record" "mongodb" {
-  zone_id = Z08053652T3ZYZGCDQNRV # get the hosted zone ID from the route53
+  zone_id = "Z08053652T3ZYZGCDQNRV" # get the hosted zone ID from the route53
   name    = "mongodb-mohindhar.tech"
   type    = "A"
   ttl     = 30
@@ -55,7 +55,7 @@ resource "aws_instance" "catalogue" {
 }
 
 resource "aws_route53_record" "catalogue" {
-  zone_id = Z08053652T3ZYZGCDQNRV # get the hosted zone ID from the route53
+  zone_id = "Z08053652T3ZYZGCDQNRV" # get the hosted zone ID from the route53
   name    = "catalogue-mohindhar.tech"
   type    = "A"
   ttl     = 30
@@ -73,7 +73,7 @@ resource "aws_instance" "redis" {
 }
 
 resource "aws_route53_record" "redis" {
-  zone_id = Z08053652T3ZYZGCDQNRV # get the hosted zone ID from the route53
+  zone_id = "Z08053652T3ZYZGCDQNRV" # get the hosted zone ID from the route53
   name    = "redis-mohindhar.tech"
   type    = "A"
   ttl     = 30
@@ -91,7 +91,7 @@ resource "aws_instance" "user" {
 }
 
 resource "aws_route53_record" "user" {
-  zone_id = Z08053652T3ZYZGCDQNRV # get the hosted zone ID from the route53
+  zone_id = "Z08053652T3ZYZGCDQNRV" # get the hosted zone ID from the route53
   name    = "user-mohindhar.tech"
   type    = "A"
   ttl     = 30
