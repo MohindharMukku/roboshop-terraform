@@ -38,7 +38,7 @@ resource "aws_instance" "mongodb" {
 
 resource "aws_route53_record" "mongodb" {
   zone_id = "Z08053652T3ZYZGCDQNRV" # get the hosted zone ID from the route53
-  name    = "mongodb-mohindhartech
+  name    = "mongodb-mohindhar.tech"
   type    = "A"
   ttl     = 30
   records = [aws_instance.mongodb.private_ip]
