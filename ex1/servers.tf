@@ -47,7 +47,7 @@ resource "aws_instance" "redis" {
 }
 #reperate this block for creating all the 10 instances
 resource "aws_instance" "user" {
-  ami           = "data.aws_ami.centos.image_id"
+  ami           = data.aws_ami.centos.image_id
   instance_type = "t3.micro"
 
   tags = {
