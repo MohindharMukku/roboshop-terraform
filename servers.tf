@@ -8,9 +8,9 @@
 #}
 #
 # Configure the AWS Provider
-provider "aws" {
-  region = "us-east-1"
-}
+#provider "aws" {
+#  region = "us-east-1"
+#}
 
 #reperate this block for creating all the 10 instances
 data "aws_ami" "centos" {
