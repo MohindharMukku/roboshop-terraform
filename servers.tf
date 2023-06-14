@@ -60,6 +60,8 @@ resource "aws_instance" "instances" {
   }
 }
 
+####
+
 # resource "aws_route53_record" "frontend" {
 #   zone_id = "Z08053652T3ZYZGCDQNRV" # get the hosted zone ID from the route53
 #   name    = "frontend-dev.mohindhar.tech" # the dns record name should adhere to the naming rules for DNS records
