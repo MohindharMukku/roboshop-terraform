@@ -22,7 +22,7 @@ resource "aws_instance" "instances" {
   vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
 
   tags = {
-    Name = "${each.value.name}-${var.env}"
+    Name = "${var.env}-${each.value.name}"
   }
 }
 
