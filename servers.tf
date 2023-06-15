@@ -13,41 +13,7 @@
 #}
 
 #reperate this block for creating all the 10 instances
-data "aws_ami" "centos" {
-  owners      = ["973714476881"]
-  most_recent = true
-  name_regex  = "Centos-8-DevOps-Practice" # ami name should be same as the image name
-}
 
-data "aws_security_group" "allow-all" {
-  name = "allow-all"
-}
-
-variable "components" {
-  default = {
-    frontend = {
-      name = "frontend"
-      instance_type = "t3.small"
-    }
-    mongodb = {
-      name = "mongodb"
-      instance_type = "t3.small"
-    }
-    catalogue = {
-      name = "catalogue"
-      instance_type = "t3.small"
-    }
-    redis = {
-      name = "redis"
-      instance_type = "t3.small"
-    }
-    user = {
-      name = "user"
-      instance_type = "t3.small"
-    }
-  }
-  
-}
 #-------------------------------------------
 resource "aws_instance" "instances" {
   for_each = var.components
