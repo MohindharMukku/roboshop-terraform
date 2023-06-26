@@ -1,4 +1,3 @@
-variable "env" {} # here the variable "env" is assigning the env value from the main.tfvars, main.tfvars > vars.tf > servers.tf
-variable "instance_type" {}
-variable "database_servers" {}
+variable "env" {}
 variable "apps_servers" {}
+variable "database_servers" {}

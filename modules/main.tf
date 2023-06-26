@@ -16,7 +16,7 @@
 
 #-------------------------------------------
 resource "aws_instance" "instances" {
-  for_each = var.components
+  for_each = var.component_name
   ami           = data.aws_ami.centos.image_id
   instance_type = each.value["instance_type"]
   vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
@@ -27,12 +27,31 @@ resource "aws_instance" "instances" {
 }
 
 ####
-
+resource "null_resource" "provisioner" {
+  count = var.provisioner ? 1 : 0
+  depends_on = [aws_instance.instances, aws_route53_record.records]
+  provisioner "remote-exec" {
+    
+    connection {
+      type = "ssh"
+      user = "centos"
+      password = "DevOps321"
+      host = aws_instance.instances.private_ip
+    }
+    
+    inline = [
+      "rm -rf roboshop-shell",
+      "git clone https://github.com/MohindharMukku/roboshop-shell",
+      "cd roboshop-shell",
+      "sudo bash ${var.component_name}.sh ${var.password}"
+    ]
+  }
+}
 
 
 
 resource "aws_route53_record" "records" {
-  for_each = var.components
+  for_each = var.component_name
   zone_id = "Z08053652T3ZYZGCDQNRV" # get the hosted zone ID from the route53
   name    =  "${each.value.["name"]}-${var.env}.mohindhar.tech" # the dns record name should adhere to the naming rules for DNS records
   type    = "A"
