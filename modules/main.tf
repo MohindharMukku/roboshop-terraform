@@ -16,13 +16,13 @@
 
 #-------------------------------------------
 resource "aws_instance" "instances" {
-  for_each = var.component_name
+#  for_each = var.component_name
   ami           = data.aws_ami.centos.image_id
-  instance_type = each.value["instance_type"]
+  instance_type = var.instance_type
   vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
 
   tags = {
-    Name = "${var.env}-${each.value.["name"]}"
+    Name = local.name
   }
 }
 
@@ -51,9 +51,8 @@ resource "null_resource" "provisioner" {
 
 
 resource "aws_route53_record" "records" {
-  for_each = var.component_name
   zone_id = "Z08053652T3ZYZGCDQNRV" # get the hosted zone ID from the route53
-  name    =  "${each.value.["name"]}-${var.env}.mohindhar.tech" # the dns record name should adhere to the naming rules for DNS records
+  name    =  "${var.component_name}-${var.env}.mohindhar.tech" # the dns record name should adhere to the naming rules for DNS records
   type    = "A"
   ttl     = 30
   records = [aws_instance.instances.private_ip]
