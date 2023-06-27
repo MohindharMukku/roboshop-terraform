@@ -42,7 +42,7 @@
 
 module "database-servers" {
   for_each       = var.database_servers
-  source         = "./modules "
+  source         = "./modules"
   component_name = each.value["name"]
   env            = var.env
   instance_type  = each.value["instance_type"]
