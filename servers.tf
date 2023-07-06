@@ -41,16 +41,18 @@
 #---------------------------------------------
 
 module "database-servers" {
+  app_type       = "db"
   for_each       = var.database_servers
   source         = "./modules"
   component_name = each.value["name"]
   env            = var.env
   instance_type  = each.value["instance_type"]
   password       = lookup(each.value, "password", "null")
-  provisioner      = true
+  provisioner    = true
 }
 
 module "app-servers" {
+  app_type        = "app"
   depends_on = [module.database-servers]
   for_each        = var.apps_servers
   source          = "./modules"
@@ -58,4 +60,5 @@ module "app-servers" {
   env             = var.env
   instance_type   = each.value["instance_type"]
   password        = lookup(each.value, "password" , "null")
+  provisioner     = true
 }
