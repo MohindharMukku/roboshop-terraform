@@ -5,8 +5,7 @@ locals {
     "rm -rf roboshop-shell",
     "git clone https://github.com/MohindharMukku/roboshop-shell",
     "cd roboshop-shell",
-    "sudo bash ${var.component_name}.sh ${var.password}",
-    "echo <<<--- db_server ${var.env}-${var.component_name} by shell scripting successfully Installed --->>>"
+    "sudo bash ${var.component_name}.sh ${var.password}"
   ]
   
   app_commands = [
