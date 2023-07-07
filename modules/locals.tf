@@ -10,7 +10,7 @@ locals {
   
   app_commands = [
     "sudo labauto ansible",
-    "echo ${var.env}.sh ${var.component_name}- bing!",
+    "echo ${var.env}.sh ${var.component_name} - bing!",
     "ansible-pull -i localhost, -U https://github.com/MohindharMukku/roboshop-ansible roboshop.yml -e env=${var.env} -e role=${var.component_name}"
   ]
   
