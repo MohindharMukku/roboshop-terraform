@@ -5,13 +5,14 @@ locals {
     "rm -rf roboshop-shell",
     "git clone https://github.com/MohindharMukku/roboshop-shell",
     "cd roboshop-shell",
-    "sudo bash ${var.component_name}.sh ${var.password}"
+    "sudo bash ${var.component_name}.sh ${var.password}",
+    "echo <<<--- db_server ${var.env}-${var.component_name} by shell scripting successfully Installed --->>>"
   ]
   
   app_commands = [
-#    "sudo labauto ansible",
-#    "ansible-pull -i localhost, -U https://github.com/MohindharMukku/roboshop-ansible roboshop.yml -e env=${var.env} -e role=${var.component_name}"
-     "echo app_server ${var.env}-${var.component_name} installed "
+    "sudo labauto ansible",
+    "ansible-pull -i localhost, -U https://github.com/MohindharMukku/roboshop-ansible roboshop.yml -e env=${var.env} -e role=${var.component_name}",
+    "echo <<<--- app_server ${var.env}-${var.component_name} by Ansible pull successfully Installed --->>>"
   ]
   
 }
